@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Predixa AI — Enhancing Profits in Manufacturing</title>
+  <meta name="description" content="Predixa AI reduces downtime and boosts manufacturing efficiency with real-time monitoring, predictive insights, and actionable recommendations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0f1a;
+      --bg-soft: #0e1422;
+      --text: #e6ebff;
+      --muted: #a6b0d3;
+      --primary: #7bb3ff;
+      --accent: #4da3ff;
+      --ring: rgba(77,163,255,0.35);
+      --card: #0c1220;
+      --card-edge: rgba(255,255,255,0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(77,163,255,0.18), transparent 60%),
+                  linear-gradient(180deg, var(--bg), var(--bg-soft) 60%, #070b14 100%);
+      line-height: 1.6;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(180deg, rgba(10,15,26,0.85), rgba(10,15,26,0.35));
+      border-bottom: 1px solid var(--card-edge);
+      z-index: 50;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .brand img {
+      width: 36px; height: 36px; border-radius: 8px;
+      filter: drop-shadow(0 0 18px rgba(77,163,255,0.5));
+    }
+    .brand strong { font-size: 1.05rem; letter-spacing: 0.2px; }
+
+    .nav a.btn {
+      padding: 10px 16px;
+      border: 1px solid var(--card-edge);
+      border-radius: 12px;
+      transition: 150ms ease-in-out;
+    }
+    .nav a.btn:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 6px var(--ring);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 72px 0 40px;
+      text-align: center;
+    }
+    .logo-wrap {
+      display: grid; place-items: center;
+    }
+    .logo {
+      width: clamp(120px, 22vw, 220px);
+      height: auto;
+      filter: drop-shadow(0 0 28px rgba(77,163,255,0.6)) drop-shadow(0 0 80px rgba(77,163,255,0.25));
+    }
+    h1 {
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      line-height: 1.15;
+      margin: 22px 0 10px;
+      letter-spacing: 0.2px;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      margin: 0 auto 26px;
+      max-width: 780px;
+    }
+    .cta {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      background: linear-gradient(180deg, var(--accent), #2d6bd4);
+      color: #051026;
+      font-weight: 700;
+      padding: 14px 20px;
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(77,163,255,0.25), inset 0 1px 0 rgba(255,255,255,0.35);
+      border: none;
+      cursor: pointer;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(77,163,255,0.35);
+    }
+    .ghost {
+      display: inline-flex; gap: 10px; align-items: center;
+      background: transparent; color: var(--text);
+      padding: 12px 18px; border-radius: 12px;
+      border: 1px solid var(--card-edge);
+      margin-left: 10px;
+      transition: 150ms ease;
+    }
+    .ghost:hover { border-color: var(--primary); box-shadow: 0 0 0 6px var(--ring); }
+
+    /* Features */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 22px 0 10px;
+    }
+    .card {
+      background: linear-gradient(180deg, var(--card), #0a1120);
+      border: 1px solid var(--card-edge);
+      border-radius: 16px;
+      padding: 20px;
+      min-height: 160px;
+      transition: 160ms ease;
+    }
+    .card:hover { box-shadow: 0 14px 34px rgba(0,0,0,0.35), 0 0 0 6px var(--ring); border-color: rgba(77,163,255,0.4); }
+    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    /* Validation/Why */
+    .panel {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 22px;
+      margin-top: 22px;
+    }
+    .pill {
+      display: inline-block;
+      background: rgba(77,163,255,0.12);
+      border: 1px solid rgba(77,163,255,0.25);
+      color: var(--primary);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      letter-spacing: 0.25px;
+    }
+    .muted { color: var(--muted); }
+
+    /* Contact */
+    .contact {
+      margin: 40px 0 70px;
+      text-align: center;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid var(--card-edge);
+      background: linear-gradient(180deg, rgba(77,163,255,0.08), rgba(77,163,255,0.02));
+    }
+    .contact a.email {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #0d1629;
+      border: 1px solid var(--card-edge);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .contact a.email:hover { border-color: var(--primary); box-shadow: 0 0 0 6px var(--ring), inset 0 1px 0 rgba(255,255,255,0.06); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-edge);
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 20px 0 34px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .panel { grid-template-columns: 1fr; }
+      .ghost { margin-left: 0; margin-top: 10px; }
+      .hero { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="./ChatGPT Image Sep 19, 2025, 03_44_14 PM.png" alt="Predixa AI logo">
+        <strong>Predixa AI</strong>
+      </div>
+      <nav>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="logo-wrap">
+        <img class="logo" src="./ChatGPT Image Sep 19, 2025, 03_44_14 PM.png" alt="Predixa AI logo large">
+      </div>
+      <h1>Enhancing Profits in Manufacturing with AI‑Powered Insights</h1>
+      <p class="sub">Predixa AI helps manufacturers reduce downtime, predict failures, and optimize processes in real time — turning operational data into clear, actionable outcomes.</p>
+      <div>
+        <a class="cta" href="#contact">Join Early Access</a>
+        <a class="ghost" href="#learn-more">Learn More</a>
+      </div>
+    </section>
+
+    <section id="learn-more">
+      <div class="grid">
+        <article class="card">
+          <h3>Real‑Time Monitoring</h3>
+          <p>Observe production health as it happens and surface issues before they become costly interruptions.</p>
+        </article>
+        <article class="card">
+          <h3>Root‑Cause Diagnostics</h3>
+          <p>Pinpoint underlying problems fast and shorten mean time to resolution across lines and units.</p>
+        </article>
+        <article class="card">
+          <h3>Actionable Recommendations</h3>
+          <p>Receive clear next steps that help teams prevent failures and boost line efficiency.</p>
+        </article>
+      </div>
+
+      <div class="panel">
+        <div class="card">
+          <span class="pill">Why it matters</span>
+          <h3 style="margin:10px 0 6px">Downtime is expensive</h3>
+          <p class="muted">Manufacturers lose massive value each year to unplanned stops and slow diagnosis. Predixa AI equips operations teams with timely insights to contain risk and protect profitability — without overhauling existing systems.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Why Predixa AI</span>
+          <h3 style="margin:10px 0 6px">Agile. Practical. Focused.</h3>
+          <p class="muted">Designed for small to mid‑size manufacturers in high‑tech environments. We focus on rapid value, lean integration, and an accessible partnership approach.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact Us</h2>
+      <p class="muted">Interested in early access or partnerships? Reach out — we’d love to hear from you.</p>
+      <p>
+        <a class="email" href="mailto:SENAITD@predixaai.com">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+          </svg>
+          SENAITD@predixaai.com
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Predixa AI — AI‑driven manufacturing solutions
+    </div>
+  </footer>
+
+  <script>
+    // current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
