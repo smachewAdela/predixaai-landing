@@ -1,299 +1,722 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Predixa AI — Enhancing Profits in Manufacturing</title>
-  <meta name="description" content="Predixa AI reduces downtime and boosts manufacturing efficiency with real-time monitoring, predictive insights, and actionable recommendations." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a0f1a;
-      --bg-soft: #0e1422;
-      --text: #e6ebff;
-      --muted: #a6b0d3;
-      --primary: #7bb3ff;
-      --accent: #4da3ff;
-      --ring: rgba(77,163,255,0.35);
-      --card: #0c1220;
-      --card-edge: rgba(255,255,255,0.06);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PredixaAI | Intelligent Predictive Maintenance & Optimization</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Brand Colors based on Logo/Deck */
+            --primary: #3B9AE1;
+            --primary-dark: #2c7bb5;
+            --secondary: #0f172a; /* Deep Navy/Black */
+            --slate: #64748b;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+        }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 70% -10%, rgba(77,163,255,0.18), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg-soft) 60%, #070b14 100%);
-      line-height: 1.6;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--secondary);
+            line-height: 1.6;
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .container {
-      width: min(1100px, 92vw);
-      margin: 0 auto;
-    }
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      backdrop-filter: saturate(140%) blur(8px);
-      background: linear-gradient(180deg, rgba(10,15,26,0.85), rgba(10,15,26,0.35));
-      border-bottom: 1px solid var(--card-edge);
-      z-index: 50;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .brand img {
-      width: 36px; height: 36px; border-radius: 8px;
-      filter: drop-shadow(0 0 18px rgba(77,163,255,0.5));
-    }
-    .brand strong { font-size: 1.05rem; letter-spacing: 0.2px; }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
 
-    .nav a.btn {
-      padding: 10px 16px;
-      border: 1px solid var(--card-edge);
-      border-radius: 12px;
-      transition: 150ms ease-in-out;
-    }
-    .nav a.btn:hover {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 6px var(--ring);
-    }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(59, 154, 225, 0.2);
+        }
 
-    /* Hero */
-    .hero {
-      padding: 72px 0 40px;
-      text-align: center;
-    }
-    .logo-wrap {
-      display: grid; place-items: center;
-    }
-    .logo {
-      width: clamp(120px, 22vw, 220px);
-      height: auto;
-      filter: drop-shadow(0 0 28px rgba(77,163,255,0.6)) drop-shadow(0 0 80px rgba(77,163,255,0.25));
-    }
-    h1 {
-      font-size: clamp(1.9rem, 3.6vw, 3rem);
-      line-height: 1.15;
-      margin: 22px 0 10px;
-      letter-spacing: 0.2px;
-    }
-    .sub {
-      color: var(--muted);
-      font-size: clamp(1rem, 1.6vw, 1.15rem);
-      margin: 0 auto 26px;
-      max-width: 780px;
-    }
-    .cta {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      background: linear-gradient(180deg, var(--accent), #2d6bd4);
-      color: #051026;
-      font-weight: 700;
-      padding: 14px 20px;
-      border-radius: 14px;
-      box-shadow: 0 10px 24px rgba(77,163,255,0.25), inset 0 1px 0 rgba(255,255,255,0.35);
-      border: none;
-      cursor: pointer;
-      transition: transform 120ms ease, box-shadow 120ms ease;
-    }
-    .cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(77,163,255,0.35);
-    }
-    .ghost {
-      display: inline-flex; gap: 10px; align-items: center;
-      background: transparent; color: var(--text);
-      padding: 12px 18px; border-radius: 12px;
-      border: 1px solid var(--card-edge);
-      margin-left: 10px;
-      transition: 150ms ease;
-    }
-    .ghost:hover { border-color: var(--primary); box-shadow: 0 0 0 6px var(--ring); }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
 
-    /* Features */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin: 22px 0 10px;
-    }
-    .card {
-      background: linear-gradient(180deg, var(--card), #0a1120);
-      border: 1px solid var(--card-edge);
-      border-radius: 16px;
-      padding: 20px;
-      min-height: 160px;
-      transition: 160ms ease;
-    }
-    .card:hover { box-shadow: 0 14px 34px rgba(0,0,0,0.35), 0 0 0 6px var(--ring); border-color: rgba(77,163,255,0.4); }
-    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--secondary);
+        }
 
-    /* Validation/Why */
-    .panel {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 22px;
-      margin-top: 22px;
-    }
-    .pill {
-      display: inline-block;
-      background: rgba(77,163,255,0.12);
-      border: 1px solid rgba(77,163,255,0.25);
-      color: var(--primary);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      letter-spacing: 0.25px;
-    }
-    .muted { color: var(--muted); }
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            background: var(--light-bg);
+        }
 
-    /* Contact */
-    .contact {
-      margin: 40px 0 70px;
-      text-align: center;
-      padding: 24px;
-      border-radius: 16px;
-      border: 1px solid var(--card-edge);
-      background: linear-gradient(180deg, rgba(77,163,255,0.08), rgba(77,163,255,0.02));
-    }
-    .contact a.email {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: #0d1629;
-      border: 1px solid var(--card-edge);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-    .contact a.email:hover { border-color: var(--primary); box-shadow: 0 0 0 6px var(--ring), inset 0 1px 0 rgba(255,255,255,0.06); }
+        .section-padding {
+            padding: 100px 0;
+        }
 
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--card-edge);
-      color: var(--muted);
-      font-size: 0.95rem;
-      padding: 20px 0 34px;
-      text-align: center;
-    }
+        .text-center { text-align: center; }
+        
+        /* Navigation (Standard) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
 
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; }
-      .panel { grid-template-columns: 1fr; }
-      .ghost { margin-left: 0; margin-top: 10px; }
-      .hero { padding-top: 56px; }
-    }
-  </style>
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--slate);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        /* --- MODERN MODAL STYLES (REQUIRED) --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex; /* Centering */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: auto; 
+            padding: 40px; /* Whitespace */
+            border-radius: 16px; /* Rounded corners */
+            max-width: 450px; 
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-btn {
+            color: var(--slate);
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: 300;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--primary-dark);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* Form Styles */
+        .modal-header {
+            text-align: center; /* Simple header, centered */
+            margin-bottom: 25px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .modal-header p {
+            color: var(--slate);
+            font-size: 0.95rem;
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        .form-group label {
+            display: block; /* Stacked label */
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px; 
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 154, 225, 0.15); 
+        }
+
+        .form-group textarea {
+            min-height: 120px; /* Multiline message field */
+            resize: vertical;
+        }
+
+        .trust-note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--slate);
+        }
+
+        .trust-note a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        /* Team Section Specific Styles */
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        /* Container for the advisory board row to force a new line */
+        .advisory-row {
+            width: 100%; /* Ensure it spans the full width of the grid container */
+            display: flex;
+            justify-content: center;
+            margin-top: 40px; /* Extra space below co-founders */
+        }
+
+        .team-member-card {
+            max-width: 250px;
+            text-align: center;
+        }
+
+        .team-member-card .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            border: 3px solid var(--primary);
+            overflow: hidden; /* Ensure image fits */
+        }
+        
+        /* New style for the actual image inside the avatar circle */
+        .team-member-card .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the circle neatly */
+        }
+
+
+        .team-member-card h4 {
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .team-member-card p {
+            color: var(--slate);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        /* End Team Section Styles */
+        
+        /* Existing Section Styles (Generalized) */
+        .hero { padding-top: 180px; padding-bottom: 100px; background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); position: relative; overflow: hidden; }
+        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+        /* Changed icon and text */
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: #e0f2fe; color: var(--primary-dark); padding: 6px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .hero-title { font-size: 3.5rem; line-height: 1.1; font-weight: 800; color: var(--secondary); margin-bottom: 24px; letter-spacing: -1px; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--slate); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .stats-section { background-color: var(--white); }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+        .stat-card { padding: 30px; border-radius: 12px; background: var(--light-bg); transition: transform 0.3s; }
+        .stat-card:hover { transform: translateY(-5px); }
+        .stat-val { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 8px; display: block; }
+        .stat-label { font-size: 1rem; color: var(--secondary); font-weight: 600; }
+        .stat-desc { font-size: 0.9rem; color: var(--slate); margin-top: 8px; }
+        .split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .section-header h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 16px; }
+        .section-header p { font-size: 1.1rem; color: var(--slate); }
+        .feature-list { margin-top: 32px; display: grid; gap: 20px; }
+        .feature-item { display: flex; gap: 16px; align-items: flex-start; }
+        .feature-icon { background: #e0f2fe; color: var(--primary); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .dashboard-container { background: var(--secondary); border-radius: 16px; padding: 12px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .dashboard-screen { background: #0f172a; border-radius: 8px; overflow: hidden; position: relative; aspect-ratio: 16/10; }
+        .dash-nav { height: 40px; border-bottom: 1px solid #334155; display: flex; align-items: center; padding: 0 16px; gap: 8px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: #334155; }
+        .dot.red { background: #ef4444; }
+        .dot.yellow { background: #f59e0b; }
+        .dot.green { background: #10b981; }
+        .dash-content { padding: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+        .dash-panel { background: #1e293b; border-radius: 6px; padding: 16px; border: 1px solid #334155; }
+        .alert-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #334155; color: #cbd5e1; font-size: 0.85rem; }
+        .status-badge { padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+        .status-critical { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 48px; }
+        .tech-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 32px; transition: 0.3s; }
+        .tech-card:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .tech-card h3 { margin: 16px 0 8px; font-size: 1.25rem; }
+        .tech-card p { color: var(--slate); font-size: 0.95rem; }
+        .cta-wrapper { background: var(--secondary); border-radius: 24px; padding: 80px 40px; text-align: center; color: white; position: relative; overflow: hidden; }
+        .cta-wrapper h2 { font-size: 2.5rem; margin-bottom: 24px; }
+        .cta-wrapper p { color: #94a3b8; max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; }
+        footer { border-top: 1px solid var(--border); padding: 60px 0; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        .footer-col h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--secondary); margin-bottom: 16px; }
+        .footer-links li { list-style: none; margin-bottom: 12px; }
+        .footer-links a { text-decoration: none; color: var(--slate); font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--primary); }
+        @media (max-width: 900px) {
+            .hero-title { font-size: 2.5rem; }
+            .split-section { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="./logo.png" alt="Predixa AI logo">
-        <strong>Predixa AI</strong>
-      </div>
-      <nav>
-        <a class="btn" href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <main class="container">
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo-box">
+                <img src="predixa logo.png" alt="PredixaAI" class="logo-img">
+                <span class="logo-text">PredixaAI</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#platform" class="nav-link">Platform</a></li>
+                <li><a href="#benefits" class="nav-link">Benefits</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#technology" class="nav-link">Technology</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Book Demo</a>
+        </div>
+    </nav>
+
     <section class="hero">
-      <div class="logo-wrap">
-        <img class="logo" src="./logo.png" alt="Predixa AI logo large">
-      </div>
-      <h1>Enhancing Profits in Manufacturing with AI‑Powered Insights</h1>
-      <p class="sub">Predixa AI helps manufacturers reduce downtime, predict failures, and optimize processes in real time — turning operational data into clear, actionable outcomes.</p>
-      <div>
-        <a class="cta" href="#contact">Join Early Access</a>
-        <a class="ghost" href="#learn-more">Learn More</a>
-      </div>
-    </section>
-
-    <section id="learn-more">
-      <div class="grid">
-        <article class="card">
-          <h3>Real‑Time Monitoring</h3>
-          <p>Observe production health as it happens and surface issues before they become costly interruptions.</p>
-        </article>
-        <article class="card">
-          <h3>Root‑Cause Diagnostics</h3>
-          <p>Pinpoint underlying problems fast and shorten mean time to resolution across lines and units.</p>
-        </article>
-        <article class="card">
-          <h3>Actionable Recommendations</h3>
-          <p>Receive clear next steps that help teams prevent failures and boost line efficiency.</p>
-        </article>
-      </div>
-
-      <div class="panel">
-        <div class="card">
-          <span class="pill">Why it matters</span>
-          <h3 style="margin:10px 0 6px">Downtime is expensive</h3>
-          <p class="muted">Manufacturers lose massive value each year to unplanned stops and slow diagnosis. Predixa AI equips operations teams with timely insights to contain risk and protect profitability — without overhauling existing systems.</p>
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge"><i class="fas fa-industry"></i> Industrial AI for Operations</div>
+                <h1 class="hero-title">Boost Operational Efficiency and <span style="color: var(--primary);">Eliminate Unplanned Downtime</span></h1>
+                <p class="hero-subtitle">PredixaAI is the specialized AI solution that combines deep operational data with real-time predictive analytics to automatically identify root causes in complex manufacturing environments.</p>
+                
+                <div style="display: flex; gap: 16px; justify-content: center;">
+                    <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+                    <a href="#platform" class="btn btn-outline">View Platform</a>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <span class="pill">Why Predixa AI</span>
-          <h3 style="margin:10px 0 6px">Agile. Practical. Focused.</h3>
-          <p class="muted">Designed for small to mid‑size manufacturers in high‑tech environments. We focus on rapid value, lean integration, and an accessible partnership approach.</p>
+    </section>
+
+    <section class="section-padding stats-section" id="benefits">
+        <div class="container">
+            <div class="text-center" style="max-width: 700px; margin: 0 auto 60px;">
+                <h2 style="font-size: 2rem; margin-bottom: 16px;">The Critical Cost of Industrial Inefficiency</h2>
+                <p style="color: var(--slate);">In high-stakes industrial operations, unplanned downtime can cost millions. Our solution targets these costly inefficiencies across the board.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-val">$125K - $350K</span>
+                    <span class="stat-label">Cost Per Hour</span>
+                    <p class="stat-desc">Of unplanned machine downtime in a typical production line.</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">80%</span>
+                    <span class="stat-label">Report Difficulty</span>
+                    <p class="stat-desc">Of manufacturers report difficulty in quickly identifying the root cause of downtime.</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">Quality Control</span>
+                    <span class="stat-label">Maintained Process Output</span>
+                    <p class="stat-desc">Predicting process drift to protect high-value material runs and product quality.</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+    
+    <section class="section-padding" id="team" style="background: var(--light-bg);">
+        <div class="container text-center">
+            <div style="max-width: 700px; margin: 0 auto 60px;">
+                <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 0.85rem;">The People</span>
+                <h2 style="font-size: 2.25rem; margin-bottom: 16px;">Our Expert Team</h2>
+                <p style="color: var(--slate); font-size: 1.1rem;">Bringing deep operational and technical expertise to industrial AI.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member-card">
+                    <div class="avatar">
+                        <img src="senait.png" alt="Photo of Senait Dasa, CEO & Co-Founder">
+                    </div>
+                    <h4>Senait Dasa</h4>
+                    <p style="font-weight: 600; color: var(--secondary);">CEO & Co-Founder</p>
+                    <p>B.Sc. Chemical Engineer</p>
+                </div>
+                <div class="team-member-card">
+                    <div class="avatar">
+					<img src="smachew.png" alt="Photo of Smachew Adela, CTO & Co-Founder">
+					</div>
+                    <h4>Smachew Adela</h4>
+                    <p style="font-weight: 600; color: var(--secondary);">CTO & Co-Founder</p>
+                    <p>B.Sc. Computer Science</p>
+                </div>
+            </div>
+
+            <div class="advisory-row">
+                <div class="team-member-card">
+                    <div class="avatar"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h4>Advisory Team</h4>
+                    <p style="font-weight: 600; color: var(--secondary);">Matan Ben Zion, Solomon Geveye</p>
+                    <p>AI, Entrepreneurship & Business Expertise</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="contact">
-      <h2>Contact Us</h2>
-      <p class="muted">Interested in early access or partnerships? Reach out — we’d love to hear from you.</p>
-      <p>
-        <a class="email" href="mailto:SENAITD@predixaai.com">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
-          </svg>
-          SENAITD@predixaai.com
-        </a>
-      </p>
-    </section>
-  </main>
+    <section class="section-padding" id="platform">
+        <div class="container split-section">
+            <div>
+                <div class="section-header">
+                    <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; font-size: 0.85rem;">The Solution</span>
+                    <h2>Intelligent Predictive Maintenance</h2>
+                    <p>PredixaAI integrates easily with existing SCADA and historian systems to predict and pinpoint critical failures before they happen.</p>
+                </div>
 
-  <footer>
-    <div class="container">
-      © <span id="year"></span> Predixa AI — AI‑driven manufacturing solutions
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-eye"></i></div>
+                        <div>
+                            <h4>Real-Time Process Drift Detection</h4>
+                            <p style="font-size: 0.9rem; color: var(--slate);">Continuous surveillance of critical machine sensor data to detect minute operational deviations immediately.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                        <div>
+                            <h4>Predictive Maintenance Scheduling</h4>
+                            <p style="font-size: 0.9rem; color: var(--slate);">AI models forecast the failure of high-value assets (e.g., pumps, CNCs) before catastrophic events.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                        <div>
+                            <h4>Automatic Root Cause Diagnostics (RCA)</h4>
+                            <p style="font-size: 0.9rem; color: var(--slate);">Instantly identifies the source of the anomaly, reducing troubleshooting time by up to 80%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-container">
+                <div class="dashboard-screen">
+                    <div class="dash-nav">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                        <div style="color: #64748b; font-size: 0.8rem; margin-left: 10px;">PredixaAI Console - CNC Machine 101</div>
+                    </div>
+                    <div class="dash-content">
+                        <div class="dash-panel" style="grid-column: span 2;">
+                            <div style="color: #94a3b8; font-size: 0.75rem; margin-bottom: 10px;">LIVE DIAGNOSTICS</div>
+                            <h3 style="color: white; font-weight: 500; font-size: 1.2rem;">Critical Alarm: Bearing Vibration Anomaly</h3>
+                            <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 5px; margin-bottom: 15px;">Confidence: 94% | Impact: System Shutdown Imminent</p>
+                            
+                            <div style="background: #334155; padding: 12px; border-radius: 4px; border-left: 3px solid var(--primary);">
+                                <div style="color: white; font-size: 0.9rem;"><strong>Recommendation:</strong> Schedule immediate maintenance for spindle bearing replacement. Reduce motor speed by 15%.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="dash-panel" style="grid-column: span 2;">
+                            <div style="color: #94a3b8; font-size: 0.75rem; margin-bottom: 10px;">RECENT ALERTS</div>
+                            <div class="alert-row">
+                                <span>Press Tool 03 - Hydraulic Leak Rate</span>
+                                <span class="status-badge status-critical">Predictive Alert</span>
+                            </div>
+                            <div class="alert-row" style="border:none;">
+                                <span>Packaging Line 05 - Sensor 2</span>
+                                <span class="status-badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">Stable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="technology" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <h2>Specialized Value for Industrial Operations</h2>
+                <p style="color: var(--slate);">Our differentiation lies in integrating deep industrial know-how with cutting-edge, yet accessible, technology to maximize uptime.</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fas fa-bolt fa-2x" style="color: var(--primary);"></i>
+                    <h3>Accessible & Agile Deployment</h3>
+                    <p>Designed for quick deployment and minimal integration time with existing industrial control systems (SCADA, MES).</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-search-location fa-2x" style="color: var(--primary);"></i>
+                    <h3>Precision Root Cause Analysis</h3>
+                    <p>Instantly isolates the failure origin (machine or process), minimizing production loss and diagnosis time.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-users-cog fa-2x" style="color: var(--primary);"></i>
+                    <h3>Domain Expert Modeling</h3>
+                    <p>Our AI models are built and validated by certified industrial engineers who understand complex operational processes.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-shield-alt fa-2x" style="color: var(--primary);"></i>
+                    <h3>Downtime Prevention Focus</h3>
+                    <p>Dedicated to predicting and preventing the conditions that lead to equipment failure and costly production halts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="contact" style="padding-bottom: 80px;">
+        <div class="cta-wrapper">
+            <h2>Ready to Maximize Your Operational Uptime?</h2>
+            <p>Schedule a personalized consultation with our industrial AI experts.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <button id="openContactModalC" class="btn" style="background: white; color: var(--secondary);">Contact Us</button>
+                
+                <button id="openContactModalB" class="btn" style="border: 1px solid rgba(255,255,255,0.3); color: white; background: transparent;">Book a Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo-box" style="margin-bottom: 20px;">
+                    <img src="predixa logo.png" alt="PredixaAI" class="logo-img">
+                    <span class="logo-text" style="color: var(--secondary);">PredixaAI</span>
+                </div>
+                <p style="color: var(--slate); font-size: 0.9rem; max-width: 300px;">
+                    AI solutions for high-precision manufacturing and predictive maintenance.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="#platform">Features</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#benefits">Benefits & ROI</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="mailto:smachewa@predixaai.com">smachewa@predixaai.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container text-center" style="margin-top: 60px; border-top: 1px solid var(--border); padding-top: 20px;">
+            <p style="color: var(--slate); font-size: 0.85rem;">&copy; 2025 PredixaAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <div class="modal-header">
+                <h3 id="modal-header">Contact Us</h3> 
+                <p>Fill out the form below and we'll be in touch shortly.</p>
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required >
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Work Email</label>
+                    <input type="email" id="email" required >
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company (Optional)</label>
+                    <input type="text" id="company" >
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message / Area of Interest</label>
+                    <textarea id="message" ></textarea>
+                </div>
+                
+                <button type="button" onclick="sendContactRequest()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Send Request</button>
+            </form>
+
+            <p class="trust-note">
+                We respect your privacy. For support, please email 
+                <a href="mailto:smachewa@predixaai.com">smachewa@predixaai.com</a>.
+            </p>
+
+        </div>
     </div>
-  </footer>
 
-  <script>
-    // current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // smooth scroll for in-page links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
+    <script>
+        const modal = document.getElementById("contactModal");
+        const modalHeader = document.getElementById("modal-header");
+        const openBtnB = document.getElementById("openContactModalB");
+        const openBtnC = document.getElementById("openContactModalC");
+        
+        // Function to open the modal and set the header title based on which button was clicked
+        function openModal(title) {
+            modalHeader.innerText = title;
+            modal.style.display = "flex"; 
         }
-      });
-    });
-  </script>
+
+        openBtnB.onclick = function() {
+            openModal("Book a Demo");
+        }
+        
+        openBtnC.onclick = function() {
+            openModal("Contact Us");
+        }
+        
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        // Close the modal if the user clicks anywhere outside of the modal content
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Function to handle the "Send" action (using mailto for simplicity)
+        function sendContactRequest() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+
+            // Basic Validation (Clear validation for required fields)
+            if (!name || !email) {
+                alert("Please fill in your Full Name and Work Email.");
+                return;
+            }
+
+            // Encode data for URL query
+            const recipient = "smachewa@predixaai.com";
+            // Use the modal header text in the email subject
+            const subject = encodeURIComponent(modalHeader.innerText + " Request from: " + name);
+            
+            let body = "Request Type: " + modalHeader.innerText + "\n\n";
+            body += "Name: " + name + "\n";
+            body += "Email: " + email + "\n";
+            body += "Company: " + (company || "N/A") + "\n";
+            body += "\n--- Message ---\n";
+            body += (message || "No specific message provided.") + "\n";
+            body += "---------------------\n";
+
+            const mailtoLink = "mailto:" + recipient + 
+                               "?subject=" + subject + 
+                               "&body=" + encodeURIComponent(body);
+
+            // Open mail client
+            window.location.href = mailtoLink;
+            
+            // Close modal after attempting to open mail client
+            setTimeout(closeModal, 100); 
+        }
+    </script>
+
 </body>
 </html>
