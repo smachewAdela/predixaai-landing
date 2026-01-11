@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coming Soon</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f2f3f5;
+      --primary-text: #1f2937;
+      --accent: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background: var(--bg-color);
+      font-family: 'Sora', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 10px 25px rgba(59, 130, 246, 0.35));
+    }
+
+    .coming-soon {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary-text);
+      position: relative;
+    }
+
+    .coming-soon::after {
+      content: '';
+      display: block;
+      margin: 24px auto 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      border-radius: 2px;
+    }
+
+    .subtitle {
+      margin-top: 24px;
+      font-size: 1.1rem;
+      color: #6b7280;
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="logo.png" alt="Company Logo" class="logo" />
+
+    <div class="coming-soon">Coming Soon</div>
+
+    <div class="subtitle">
+      Something powerful is on the way
+    </div>
+  </div>
+
+</body>
+</html>
